@@ -5,7 +5,7 @@
 #include <QSqlDatabase>
 #include <QTimer>
 
-#define TIMEOUT 1*1000
+#define TIMEOUT 1*3000
 namespace Ui {
 class Iot;
 }
@@ -23,8 +23,9 @@ private slots:
 
 private:
     Ui::Iot *ui;
-    QSqlDatabase *db;
+    QSqlDatabase db;
     QTimer *timer;
+    QSqlDatabase dblocal;
 };
 
 #endif // IOT_H

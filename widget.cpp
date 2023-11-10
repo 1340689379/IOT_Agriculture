@@ -14,14 +14,14 @@ Widget::Widget(QWidget *parent)
 
     QSqlDatabase d=QSqlDatabase::addDatabase("QODBC");
     db=&d;
-    //db->setHostName("127.0.0.1");  //连接本地主机
+
     db->setHostName("120.25.3.98");
     db->setPort(3306);
-    //db->setDatabaseName("Mysql");
     db->setDatabaseName("Mysql1");
-    //db->setUserName("root");
     db->setUserName("IoTagriDB");
     db->setPassword("200243");
+
+
     bool ok = db->open();
     if (ok){
         msgBox.setText( "link success");
