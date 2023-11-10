@@ -2,7 +2,7 @@
 #include "ui_iot.h"
 #include <QSqlQuery>
 #include <QString>
-#include <widget.h>
+#include <login.h>
 #include <QMessageBox>
 #include <QSqlError>
 Iot::Iot(QSqlDatabase *dbase,QWidget *parent) :
@@ -41,7 +41,7 @@ Iot::Iot(QSqlDatabase *dbase,QWidget *parent) :
     dblocal.setPort(3306);
     dblocal.setDatabaseName("Mysql");
     dblocal.setUserName("root");
-    dblocal.setPassword("200243");
+    dblocal.setPassword("root");
     ok = dblocal.open();
     if (ok){
         msgBox.setText( "link success");

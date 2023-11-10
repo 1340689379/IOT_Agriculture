@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>resources/icons/close.svg</file>
+        <file>resources/icons/IOT.svg</file>
+        <file>resources/icons/eye_open.svg</file>
+        <file>resources/icons/eye_close.svg</file>
+    </qresource>
+</RCC>

@@ -10,18 +10,28 @@ CONFIG += c++17
 
 SOURCES += \
     iot.cpp \
+    login.cpp \
     main.cpp \
-    widget.cpp
+    registerpage.cpp
 
 HEADERS += \
     iot.h \
-    widget.h
+    login.h \
+    registerpage.h
 
 FORMS += \
     iot.ui \
-    widget.ui
+    login.ui \
+    registerpage.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    icons.qrc \
+    images.qrc
+
+ICON += ":/new/prefix1/IOT.svg"
+ICON += ":/new/prefix1/close.svg"
