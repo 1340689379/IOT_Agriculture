@@ -21,6 +21,8 @@ public:
 private slots:
     void onTimeOut();
 
+    void on_update_button_clicked();
+
 private:
     Ui::Iot *ui;
     QSqlDatabase db;

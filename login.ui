@@ -278,6 +278,17 @@ font: 14pt &quot;Candara&quot;;</string>
      </layout>
     </item>
     <item>
+     <widget class="QPushButton" name="pushButton">
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+color: rgb(85, 0, 255);</string>
+      </property>
+      <property name="text">
+       <string>忘记密码→</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <spacer name="verticalSpacer_3">
       <property name="orientation">
        <enum>Qt::Vertical</enum>

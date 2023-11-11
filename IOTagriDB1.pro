@@ -9,17 +9,20 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    forget.cpp \
     iot.cpp \
     login.cpp \
     main.cpp \
     registerpage.cpp
 
 HEADERS += \
+    forget.h \
     iot.h \
     login.h \
     registerpage.h
 
 FORMS += \
+    forget.ui \
     iot.ui \
     login.ui \
     registerpage.ui

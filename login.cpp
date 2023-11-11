@@ -6,6 +6,7 @@
 #include <QSqlQuery>
 #include <QDebug>
 #include <registerpage.h>
+#include <forget.h>
 
 Login::Login(QWidget *parent)
     : QWidget(parent)
@@ -112,5 +113,13 @@ void Login::on_eye_button_clicked()
         ui->eye_button->setIcon(QIcon(":/new/prefix1/resources/icons/eye_close.svg"));
         ui->pdLineEdit->setEchoMode(QLineEdit::Password);
     }
+}
+
+
+void Login::on_pushButton_clicked()
+{
+    this->close();
+    Forget *f = new Forget;
+    f->show();
 }
 

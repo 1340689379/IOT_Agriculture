@@ -5,12 +5,13 @@
 #include <login.h>
 #include <QMessageBox>
 #include <QSqlError>
+#include <QTime>
+
 Iot::Iot(QSqlDatabase *dbase,QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Iot)
 {
     ui->setupUi(this);
-    QMessageBox msgBox;
     //db=dbase;
     timer= new QTimer;
     timer->start(TIMEOUT);
@@ -28,13 +29,12 @@ Iot::Iot(QSqlDatabase *dbase,QWidget *parent) :
 
     bool ok = db.open();
     if (ok){
-        msgBox.setText( "link success");
+        qDebug("阿里云数据库连接成功！");
     }
     else {
-        msgBox.setText( "link failed");
+        qDebug("阿里云数据库连接失败！");
         qDebug()<<"error open database because"<<db.lastError().text();
     }
-    msgBox.exec();
 
     dblocal=QSqlDatabase::addDatabase("QODBC","connection2");
     dblocal.setHostName("127.0.0.1");
@@ -44,13 +44,12 @@ Iot::Iot(QSqlDatabase *dbase,QWidget *parent) :
     dblocal.setPassword("root");
     ok = dblocal.open();
     if (ok){
-        msgBox.setText( "link success");
+        qDebug("本地数据库连接成功！");
     }
     else {
-        msgBox.setText( "link failed");
+        qDebug("本地数据库连接失败！");
         qDebug()<<"error open database because"<<dblocal.lastError().text();
     }
-    msgBox.exec();
 
     connect(timer, &QTimer::timeout,this,&Iot::onTimeOut);
 }
@@ -187,3 +186,47 @@ void Iot::onTimeOut(){
 }
 
 
+
+void Iot::on_update_button_clicked()
+{
+    QTime time = QTime::currentTime();
+    QString sTime = time.toString("hh:mm:ss");
+    QSqlQuery query(db);
+    int humi1 = rand()%(100-0)+0;
+    int humi2 = rand()%(100-0)+0;
+    int humi3 = rand()%(100-0)+0;
+    int temp1 = rand()%(55-0)+0;
+    int temp2 = rand()%(55-0)+0;
+    int temp3 = rand()%(55-0)+0;
+    query.prepare("INSERT INTO HUMIandTEMP1(timeset,humi,temp) "
+                   "VALUES(:timeset,:humi,:temp)");
+    query.bindValue(":timeset", sTime);
+    query.bindValue(":humi", humi1);
+    query.bindValue(":temp", temp1);
+    query.exec();
+    query.prepare("INSERT INTO HUMIandTEMP2(timeset,humi,temp) "
+                  "VALUES(:timeset,:humi,:temp)");
+    query.bindValue(":timeset", sTime);
+    query.bindValue(":humi", humi2);
+    query.bindValue(":temp", temp2);
+    query.exec();
+    query.prepare("INSERT INTO HUMIandTEMP3(timeset,humi,temp) "
+                  "VALUES(:timeset,:humi,:temp)");
+    query.bindValue(":timeset", sTime);
+    query.bindValue(":humi", humi3);
+    query.bindValue(":temp", temp3);
+    query.exec();
+    int co2 = rand()%(99999)+0;
+    query.prepare("INSERT INTO CO2(timeset,CO2ct) "
+                   "VALUES(:timeset,:CO2)");
+    query.bindValue(":timeset", sTime);
+    query.bindValue(":CO2", co2);
+    query.exec();
+    int light = rand()%(99999)+0;
+    query.prepare("INSERT INTO Light(timeset,light) "
+                   "VALUES(:timeset,:light)");
+    query.bindValue(":timeset", sTime);
+    query.bindValue(":light", light);
+    query.exec();
+
+}

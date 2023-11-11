@@ -1,0 +1,39 @@
+mysql -hlocalhost -uIoTagriDB -p
+create database IoTagriDB;
+use iotagridb;
+create table User(
+    username varchar(10) primary key,
+    password varchar(10) not null
+)charset utf8;
+
+create table HUMIandTEMP1(
+    timeset varchar(20) primary key,
+    humi integer not null,
+    temp integer not null 
+)charset utf8;
+
+create table HUMIandTEMP2(
+    timeset varchar(20) primary key,
+    humi integer not null,
+    temp integer not null 
+)charset utf8;
+
+create table HUMIandTEMP3(
+    timeset varchar(20) primary key,
+    humi integer not null,
+    temp integer not null 
+)charset utf8;
+
+create table Light(
+    timeset varchar(20) primary key,
+    light integer not null
+)charset utf8;
+create table CO2(
+    timeset varchar(20) primary key,
+    CO2ct integer not null
+)charset utf8;
+
+insert into User values("Mal","123456");
+select * from User;
+delete from User;
+ALTER TABLE User ADD COLUMN email varchar(20) not null unique;
